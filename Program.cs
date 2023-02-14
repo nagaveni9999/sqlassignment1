@@ -1,58 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace constructorsassign________demo
-{
-    internal class Program
+namespace ConstrustorsInstractor
     {
-        static void Main(string[] args)
+        internal class ABC
         {
 
+            private float avgfeedback;
+            private int experience;
+            private string instructorname;
+            private string[] instructorskill;
+
+            public ABC(string instructorname, float avgfeedback, int experience, string[] instructorskill)
+            {
+                this.instructorname = instructorname;
+                this.avgfeedback = avgfeedback;
+                this.experience = experience;
+                this.instructorskill = instructorskill;
+            }
+
+            public bool validateligibility()
+            {
+                if (experience > 3 && avgfeedback == 4.5 || experience <= 3 && avgfeedback >= 4)
+                {
+                    return true;
+                }
+                return false;
+            }
+
+            public bool checkskill(string skill)
+            {
+                foreach (string iskill in instructorskill)
+                {
+                    if (iskill.Equals(skill))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+
+
         }
-           class Employee
-        {
-            private static int counter = 1001;
-            public int EmployeeId { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
-            public double Salary { get; set; }
-            public List<string> Dependents { get; set; }
-
-            public Employee(string name, int age, double salary)
-            {
-                this.EmployeeId = counter;
-                this.Name = name;
-                this.Age = age;
-                this.Salary = salary;
-                this.Dependents = new List<string>();
-                counter++;
-            }
-
-            public void AddDependent(string dependentName)
-            {
-                if (Dependents.Count < 3)
-                {
-                    Dependents.Add(dependentName);
-                }
-                else
-                {
-                    Console.WriteLine("Cannot add more than 3 dependents.");
-                }
-            }
-            public void EditDependent(string dependentName, string newName)
-            {
-                int index = Dependents.IndexOf(dependentName);
-                if (index != -1)
-                {
-                    Dependents[index] = newName;
-                }
-                else
-                {
-                    Console.WriteLine($"Dependent with name '{dependentName}' not found.");
-                }
-            }
-        }
-
     }
-}
-
